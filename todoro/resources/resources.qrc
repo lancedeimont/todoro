@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>caquiIcon.png</file>
+        <file>caquis.jpg</file>
+        <file>go-next.png</file>
+        <file>green.png</file>
+        <file>next.png</file>
+        <file>orange.png</file>
+        <file>pause.png</file>
+        <file>red.png</file>
+        <file>start.png</file>
+        <file>stop.png</file>
+        <file>sun.png</file>
+        <file>urgent.png</file>
+    </qresource>
+    <qresource prefix="/sqlite">
+        <file>todoro.db</file>
+        <file>sqliteScript.sql</file>
+    </qresource>
+</RCC>

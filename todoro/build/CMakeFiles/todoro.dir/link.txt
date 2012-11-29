@@ -1,0 +1,1 @@
+/usr/bin/c++   -g    CMakeFiles/todoro.dir/main.cpp.o  -o todoro -rdynamic 
