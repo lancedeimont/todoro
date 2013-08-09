@@ -11,8 +11,7 @@ bool databaseSqlite::createDatabase(QWidget * parent,QString *path)
     {//show dialog and get a newPath
         qDebug()<<"no hay path"<<*path;
         QString newPath = QFileDialog::getSaveFileName(parent,
-                QObject::tr("Create Database"),
-                QDesktopServices::storageLocation(QDesktopServices::DataLocation),
+                QObject::tr("Create Database"), misc::filesPath(),
                 "SQLite3 (*.sqlite3)", 0, QFileDialog::DontConfirmOverwrite);
 
         if (newPath.isEmpty())
@@ -61,7 +60,7 @@ bool databaseSqlite::openDatabase(QWidget *parent)
 
     QString path = QFileDialog::getOpenFileName(parent,
             "Open Database",
-            (oldPath.isEmpty()) ? QDesktopServices::storageLocation(QDesktopServices::DataLocation) : oldPath,
+            (oldPath.isEmpty()) ? misc::filesPath() : oldPath,
             "SQLite3 (*.sqlite3)");
 
     if (path.isEmpty())

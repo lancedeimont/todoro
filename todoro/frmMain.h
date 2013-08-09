@@ -13,6 +13,8 @@
 #include <QSqlQuery>
 #include <QSqlQueryModel>
 #include <QSqlRecord>
+#include <QInputDialog>
+#include "misc.h"
 
 namespace Ui {
 class frmMain;

@@ -1,10 +1,11 @@
-#include <QtGui/QApplication>
+#include <QApplication>
 #include "frmMain.h"
 #include "databasesqlite.h"
 #include <QSettings>
 #include <QFile>
 #include <QDir>
 #include <QDebug>
+#include "misc.h"
 
 int main(int argc, char *argv[])
 {
@@ -21,10 +22,11 @@ int main(int argc, char *argv[])
     qDebug()<<"path "<<pathdb;
     if (!QFile::exists(pathdb))
     {
-        pathdb=QDesktopServices::storageLocation(QDesktopServices::DataLocation);
-        QDir().mkpath(pathdb+"todoro/");
+        //pathdb=QStandardPaths::standardLocations(QStandardPaths::DataLocation).back();
+        pathdb=misc::filesPath();
+        QDir().mkpath(pathdb+QDir::separator()+ "todoro"+QDir::separator());
 
-        pathdb= pathdb+"todoro/todoro.db";
+        pathdb= pathdb+QDir::separator()+"todoro"+QDir::separator()+"todoro.db";
         db->createDatabase(w,&pathdb);
     }else
     {

@@ -9,6 +9,7 @@
 #include <QSettings>
 #include <QMessageBox>
 #include <QDebug>
+#include "misc.h"
 
 class databaseSqlite
 {

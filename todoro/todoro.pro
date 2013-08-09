@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui sql
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = todoro
 TEMPLATE = app
@@ -15,14 +16,16 @@ SOURCES += main.cpp\
     frmMain.cpp \
     centity.cpp \
     cconection.cpp \
-    databasesqlite.cpp
+    databasesqlite.cpp \
+    misc.cpp
 
 HEADERS  += \
     frmMain.h \
     todorofrm.h \
     centity.h \
     cconection.h \
-    databasesqlite.h
+    databasesqlite.h \
+    misc.h
 
 FORMS    += \
     frmMain.ui \
