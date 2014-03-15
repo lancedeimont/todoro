@@ -17,7 +17,9 @@ SOURCES += main.cpp\
     centity.cpp \
     cconection.cpp \
     databasesqlite.cpp \
-    misc.cpp
+    misc.cpp \
+    ../psubmit.cpp \
+    psubmit.cpp
 
 HEADERS  += \
     frmMain.h \
@@ -25,11 +27,15 @@ HEADERS  += \
     centity.h \
     cconection.h \
     databasesqlite.h \
-    misc.h
+    misc.h \
+    ../psubmit.h \
+    psubmit.h
 
 FORMS    += \
     frmMain.ui \
-    todorofrm.ui
+    todorofrm.ui \
+    ../psubmit.ui \
+    psubmit.ui
 
 RESOURCES += \
     resources/resources.qrc
