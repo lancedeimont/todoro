@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     databasesqlite.cpp \
     misc.cpp \
     psubmit.cpp \
-    frmPreferences.cpp
+    frmPreferences.cpp \
+    frmoptions.cpp
 
 HEADERS  += \
     frmMain.h \
@@ -29,14 +30,16 @@ HEADERS  += \
     databasesqlite.h \
     misc.h \
     psubmit.h \
-    frmPreferences.h
+    frmPreferences.h \
+    frmoptions.h
 
 FORMS    += \
     frmMain.ui \
     todorofrm.ui \
     psubmit.ui \
     frmPreferences.ui \
-    frmpreferences.ui
+    frmpreferences.ui \
+    frmoptions.ui
 
 RESOURCES += \
     resources/resources.qrc
