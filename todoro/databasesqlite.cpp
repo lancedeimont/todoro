@@ -100,3 +100,9 @@ void databaseSqlite::closeDatabase()
         QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
     }
 }
+
+void databaseSqlite::removeDatabase()
+{
+    closeDatabase();
+
+}

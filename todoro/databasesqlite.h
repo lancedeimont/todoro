@@ -20,6 +20,7 @@ public:
     void closeDatabase();
     bool connectDatabase(const QString &path);
     bool openDatabase(QWidget *parent);
+    void removeDatabase();
 private:
     QSqlDatabase database;
 };

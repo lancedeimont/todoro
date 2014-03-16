@@ -19,8 +19,7 @@ SOURCES += main.cpp\
     databasesqlite.cpp \
     misc.cpp \
     psubmit.cpp \
-    frmPreferences.cpp \
-    frmpreferences.cpp
+    frmPreferences.cpp
 
 HEADERS  += \
     frmMain.h \
@@ -30,8 +29,7 @@ HEADERS  += \
     databasesqlite.h \
     misc.h \
     psubmit.h \
-    frmPreferences.h \
-    frmpreferences.h
+    frmPreferences.h
 
 FORMS    += \
     frmMain.ui \
