@@ -74,9 +74,9 @@ private:
     int todayP;
     int nPomodoros;
 //const:
-    int timrlong;
-    int timrshort;
-    int timwork;
+    int timrlong=0.15;
+    int timrshort=0.5;
+    int timwork=0.25;
 
     bool clossing;
 };

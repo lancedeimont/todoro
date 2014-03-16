@@ -83,6 +83,9 @@
        </item>
        <item>
         <widget class="QPushButton" name="star2">
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -103,6 +106,9 @@
        </item>
        <item>
         <widget class="QPushButton" name="star3">
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -123,6 +129,9 @@
        </item>
        <item>
         <widget class="QPushButton" name="star4">
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -143,6 +152,9 @@
        </item>
        <item>
         <widget class="QPushButton" name="star5">
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
          <property name="text">
           <string/>
          </property>

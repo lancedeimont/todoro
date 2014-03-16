@@ -1,5 +1,6 @@
 #include "frmMain.h"
 #include "ui_frmMain.h"
+#include "psubmit.h"
 
 #include "qfile.h"
 #include <stdio.h>
@@ -29,9 +30,7 @@ frmMain::frmMain(QWidget *parent) :
     ui->laPomodoros->setText(QString::number(nPomodoros));
     updatePomodoros();
     timer = new QTimer(this);
-    timrlong=15;
-    timrshort=5;
-    timwork=25;
+
     tmpTimestart=QDateTime::currentDateTime();
 
     trayIcon=new QSystemTrayIcon(this);
@@ -39,8 +38,6 @@ frmMain::frmMain(QWidget *parent) :
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
     trayIcon->setIcon(QIcon(":images/caquiIcon.png"));
 
-
-    //connect(trayIcon,SIGNAL(messageClicked()),this,SLOT(showMe()));
     connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this,SLOT(showMe(QSystemTrayIcon::ActivationReason)));
     menuCont=new QMenu(this);
@@ -372,7 +369,12 @@ void frmMain::savePomodoro()
     q.prepare("INSERT INTO tpomodoro VALUES(NULL, :project, :description, :startTime, :endTime)");
     q.bindValue(":project",model->data(model->index(ui->cbProjects->currentIndex(),0)).toInt());
     bool ok;
-    QString description=QInputDialog::getText(this,"Pomodoro","What did you do in this time?",QLineEdit::Normal,"",&ok);
+
+    pSubmit *frmSubmit=new pSubmit();
+    frmSubmit->show();
+
+    QString description=frmSubmit->getMessage();
+    int productivity = frmSubmit->getStarsNumber();
     if (ok)
         q.bindValue(":description",description);
     else
