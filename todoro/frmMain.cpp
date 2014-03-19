@@ -1,11 +1,12 @@
 #include "frmMain.h"
 #include "ui_frmMain.h"
 #include "psubmit.h"
+#include "frmoptions.h"
 
 #include "qfile.h"
 #include <stdio.h>
 //TODO: todayP is used and modificated in some functions, it couldn't be happen since its value is obtained from DB
-frmMain::frmMain(QWidget *parent) :
+frmMain::frmMain(QSettings *msettings, QWidget *parent) :
     //QWidget(parent,Qt::Dialog),
     QMainWindow(parent,Qt::Dialog),
     ui(new Ui::frmMain)
@@ -18,7 +19,7 @@ frmMain::frmMain(QWidget *parent) :
     ui->pom4->setVisible(false);
     ui->pom5->setVisible(false);
 
-    settings=new QSettings("mkProjs","todoro",this);
+    this->settings=msettings;
 
     loadProjects();
 
@@ -53,6 +54,7 @@ frmMain::frmMain(QWidget *parent) :
     connect(actExit,SIGNAL(triggered()),this,SLOT(exitCalled()));
     connect(actAbout,SIGNAL(triggered()),this,SLOT(showAboutTodoro()));
     connect(actSkip,SIGNAL(triggered()),this,SLOT(skipState()));
+
 
     connect(actShowme,SIGNAL(triggered()),this,SLOT(showMainform()));
     connect(actNextStage,SIGNAL(triggered()),this,SLOT(on_pbStart_clicked()));
@@ -426,4 +428,10 @@ void frmMain::updatePomodoros()
 void frmMain::projectChanged(int index)
 {
     updatePomodoros();
+}
+
+void frmMain::on_action_Preferences_triggered()
+{
+    frmOptions *fOpts = new frmOptions(settings);
+    fOpts->exec();
 }

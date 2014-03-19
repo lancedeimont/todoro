@@ -9,6 +9,7 @@
 #include <QSettings>
 #include <QMessageBox>
 #include <QDebug>
+
 #include "misc.h"
 
 class databaseSqlite
@@ -20,7 +21,8 @@ public:
     void closeDatabase();
     bool connectDatabase(const QString &path);
     bool openDatabase(QWidget *parent);
-    void removeDatabase();
+    void removeDatabase(QString path);
+    void copyDatabase(QString path, QString path2);
 private:
     QSqlDatabase database;
 };

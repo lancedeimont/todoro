@@ -14,6 +14,7 @@
 #include <QSqlQueryModel>
 #include <QSqlRecord>
 #include <QInputDialog>
+#include <QSettings>
 #include "misc.h"
 
 namespace Ui {
@@ -30,7 +31,7 @@ enum clockStates{
     PAUSE,STOP,RUN
     };
 public:
-    explicit frmMain(QWidget *parent = 0);
+    explicit frmMain(QSettings *settings, QWidget *parent = 0);
     estados currentState;
     clockStates clockState;
     ~frmMain();
@@ -47,6 +48,8 @@ private slots:
     void projectChanged(int index);
     void exitWithoutConfirm();
     void skipState();
+
+    void on_action_Preferences_triggered();
 
 private:
     void closeEvent(QCloseEvent * event);

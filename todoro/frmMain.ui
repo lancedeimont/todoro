@@ -419,7 +419,7 @@
      <x>0</x>
      <y>0</y>
      <width>641</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Archivo">
@@ -427,6 +427,8 @@
      <string>&amp;File</string>
     </property>
     <addaction name="actionNew_Project"/>
+    <addaction name="separator"/>
+    <addaction name="action_Preferences"/>
     <addaction name="separator"/>
     <addaction name="action_Exit"/>
    </widget>
@@ -459,6 +461,11 @@
   <action name="actionNew_Project">
    <property name="text">
     <string>New Project</string>
+   </property>
+  </action>
+  <action name="action_Preferences">
+   <property name="text">
+    <string>&amp;Preferences...</string>
    </property>
   </action>
  </widget>

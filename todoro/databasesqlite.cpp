@@ -101,8 +101,14 @@ void databaseSqlite::closeDatabase()
     }
 }
 
-void databaseSqlite::removeDatabase()
+void databaseSqlite::removeDatabase(QString path)
 {
     closeDatabase();
-
+    QFile::remove(path);
 }
+
+void databaseSqlite::copyDatabase(QString path, QString path2)
+{
+    QFile::copy(path, path2);
+}
+

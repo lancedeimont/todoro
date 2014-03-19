@@ -10,15 +10,13 @@
 int main(int argc, char *argv[])
 {
     databaseSqlite *db=new databaseSqlite();
-    QSettings settings("mkProjs","todoro");
-
-
+    QSettings *settings=new QSettings("mkProjs","todoro");
 
     QApplication a(argc, argv);
 
     frmMain *w;
     a.setQuitOnLastWindowClosed(false);
-    QString pathdb=settings.value("pathdb","").toString();
+    QString pathdb=settings->value("pathdb","").toString();
     qDebug()<<"path "<<pathdb;
     if (!QFile::exists(pathdb))
     {
@@ -34,10 +32,10 @@ int main(int argc, char *argv[])
         db->connectDatabase(pathdb);
     }
 
-    settings.setValue("pathdb",pathdb);
-    settings.sync();
+    settings->setValue("pathdb",pathdb);
+    settings->sync();
 
-    w=new frmMain();
+    w=new frmMain(settings);
     w->show();
     
     return a.exec();
