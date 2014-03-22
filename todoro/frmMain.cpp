@@ -286,6 +286,37 @@ void frmMain::upgradeIcon()
     }
 }
 
+
+void frmMain::makeAlertEndState()
+{
+    trayIcon->showMessage("State ended","you ended the actual process, make click in the continue button in the context menu");
+    QMediaPlayer *player=new QMediaPlayer();
+
+    QString path=misc::filesPath()+QDir::separator()+"todoro"+QDir::separator()+"sounds";
+    QString soundName = "bleat.mp3";
+    qDebug()<<"path "<<path;
+    QString pathDestine=path+QDir::separator()+soundName;
+
+    if (!QFile::exists(path))
+    {
+        QDir().mkpath(path);
+    }
+    if(!QFile::exists(pathDestine))
+        QFile::copy(":/sounds/"+soundName, pathDestine);
+
+
+    //QMediaResource mediaResource(QUrl(":"))
+
+    //QUrl url = QUrl(":/sounds/bleat.mp3");
+    //QUrl url = QUrl::fromLocalFile("/Users/miguelgalarreta/programming/mkprojs/todoro/media/bleat.wav");
+    QUrl url = QUrl::fromLocalFile(pathDestine);
+    qDebug()<<url<<url.toLocalFile()<<" y el path: "<<url.path()<< "  actual:";
+    player->setMedia(url);
+    player->setVolume(70);
+    qDebug()<<player->state();
+    player->play();
+}
+
 void frmMain::updateTime()
 {
     if (seconds==0)
@@ -300,8 +331,9 @@ void frmMain::updateTime()
             seconds=0;
             clockState=PAUSE;
             setMainButtonText("Continue");
+            makeAlertEndState();
             changeState();
-            trayIcon->showMessage("State ended","you ended the actual process, make click in the continue button in the context menu");
+
         }
         upgradeIcon();
     }
@@ -368,21 +400,23 @@ void frmMain::savePomodoro()
     QAbstractItemModel *model=ui->cbProjects->model();
 
     QSqlQuery q;
-    q.prepare("INSERT INTO tpomodoro VALUES(NULL, :project, :description, :startTime, :endTime)");
+    q.prepare("INSERT INTO tpomodoro VALUES(NULL, :project, :description, :startTime, :endTime, :productivity)");
     q.bindValue(":project",model->data(model->index(ui->cbProjects->currentIndex(),0)).toInt());
     bool ok;
 
     pSubmit *frmSubmit=new pSubmit();
-    frmSubmit->show();
+    frmSubmit->exec();
 
     QString description=frmSubmit->getMessage();
     int productivity = frmSubmit->getStarsNumber();
+    qDebug()<<"productivity "<<productivity;
     if (ok)
         q.bindValue(":description",description);
     else
         q.bindValue(":description"," ");
     q.bindValue(":startTime",tmpTimestart);
     q.bindValue(":endTime",QDateTime::currentDateTime());
+    q.bindValue(":productivity",productivity);
     q.exec();
 }
 void frmMain::saveBreak(int mints)

@@ -15,6 +15,7 @@
 #include <QSqlRecord>
 #include <QInputDialog>
 #include <QSettings>
+#include <QMediaPlayer>
 #include "misc.h"
 
 namespace Ui {
@@ -82,5 +83,6 @@ private:
     int timwork=0.25;
 
     bool clossing;
+    void makeAlertEndState();
 };
 #endif // FRMMAIN_H

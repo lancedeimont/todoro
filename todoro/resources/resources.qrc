@@ -16,7 +16,12 @@
         <file>stargray.png</file>
     </qresource>
     <qresource prefix="/sqlite">
-        <file>todoro.db</file>
+        <file>todoroOld.db</file>
         <file>sqliteScript.sql</file>
+        <file>todoro.db</file>
+    </qresource>
+    <qresource prefix="/sounds">
+        <file>boxing.mp3</file>
+        <file>bleat.mp3</file>
     </qresource>
 </RCC>
