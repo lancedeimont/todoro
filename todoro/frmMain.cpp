@@ -67,6 +67,17 @@ frmMain::frmMain(QSettings *msettings, QWidget *parent) :
 
 
     clossing=false;
+
+    if (mode==0)
+    {
+        timrlong=15;
+        timrshort=5;
+        timwork=25;
+    }else if (this->mode==1)
+    {
+        timrlong=0; timrshort=0; timwork=0;
+    }
+
 }
 
 frmMain::~frmMain()

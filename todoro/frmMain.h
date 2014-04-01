@@ -78,9 +78,11 @@ private:
     int todayP;
     int nPomodoros;
 //const:
-    int timrlong=0.15;
-    int timrshort=0.5;
-    int timwork=0.25;
+    int timrlong;
+    int timrshort;
+    int timwork;
+
+    int mode = 0; //0 to normal, 1 test(all times are 0)
 
     bool clossing;
     void makeAlertEndState();
