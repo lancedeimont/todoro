@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QSettings>
 #include "databasesqlite.h"
+#include <QFileInfo>
 
 namespace Ui {
 class frmOptions;

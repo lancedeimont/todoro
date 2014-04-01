@@ -419,7 +419,7 @@
      <x>0</x>
      <y>0</y>
      <width>641</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Archivo">
@@ -432,11 +432,6 @@
     <addaction name="separator"/>
     <addaction name="action_Exit"/>
    </widget>
-   <widget class="QMenu" name="menu_Reportes">
-    <property name="title">
-     <string>&amp;Reports</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menu_Help">
     <property name="title">
      <string>&amp;Help</string>
@@ -444,7 +439,6 @@
     <addaction name="action_About"/>
    </widget>
    <addaction name="menu_Archivo"/>
-   <addaction name="menu_Reportes"/>
    <addaction name="menu_Help"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

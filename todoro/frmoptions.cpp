@@ -28,14 +28,14 @@ void frmOptions::on_btnBackup_clicked()
     databaseSqlite *db=new databaseSqlite();
 
     QString backupName = filedir+QDir::separator()+filename+"_"+QString::number(n);
-    while(QFileInfo::exists(backupName))
+    while(QFile::exists(backupName))
     {
         n++;
         backupName = filedir+QDir::separator()+filename+"_"+QString::number(n);
     }
 
     db->copyDatabase(pathdb,backupName);
-    qDebug()<<"namefile"<< filename<< "  dir "<<filedir<< "   backupname "<<backupName;
+    qDebug()<<"namefile"<< filename<< "  dir "<< filedir << "   backupname "<<backupName;
 
 }
 
