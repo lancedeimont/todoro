@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     frmMain *w;
-    a.setQuitOnLastWindowClosed(false);
+    a.setQuitOnLastWindowClosed(false);   
     QString pathdb=settings->value("pathdb","").toString();
     qDebug()<<"path "<<pathdb;
     if (!QFile::exists(pathdb))

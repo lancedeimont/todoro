@@ -2,7 +2,7 @@
 
 QString misc::filesPath()
 {
-    return QStandardPaths::standardLocations(QStandardPaths::ConfigLocation).back();
+    return QStandardPaths::writableLocation(QStandardPaths::DataLocation);
 }
 
 misc::misc()

@@ -457,14 +457,17 @@ void frmMain::updatePomodoros()
     ui->laPomodoros->setText(QString::number(nPomodoros));
 
     QAbstractItemModel *model=ui->cbProjects->model();
-    QSqlQuery q2("SELECT count(*) FROM tpomodoro WHERE project=:project;");
+    QSqlQuery q2;
+    q2.prepare("SELECT count(*) FROM tpomodoro WHERE project= :project");
     int nproject=model->data(model->index(ui->cbProjects->currentIndex(),0)).toInt();
     q2.bindValue(":project",nproject);
     q2.exec();
+
     q2.next();
     ui->laPomodorosProject->setText(q2.value(0).toString());
 
-    QSqlQuery q3("SELECT count(*) FROM tpomodoro WHERE project=:project and date(endTime)=date('now');");
+    QSqlQuery q3;
+    q3.prepare("SELECT count(*) FROM tpomodoro WHERE project= :project and date(endTime)=date('now')");
     q3.bindValue(":project",nproject);
     q3.exec();
     q3.next();

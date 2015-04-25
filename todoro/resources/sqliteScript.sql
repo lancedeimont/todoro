@@ -11,6 +11,7 @@ create table tpomodoro(
        description TEXT, 
        startTime datetime, 
        endtime DATETIME,
+       productivity INTEGER,
        FOREIGN KEY (project) REFERENCES tproject(id)
        );
 

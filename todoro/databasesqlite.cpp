@@ -4,7 +4,7 @@ databaseSqlite::databaseSqlite()
 {
     database=QSqlDatabase::addDatabase("QSQLITE");
 }
-bool databaseSqlite::createDatabase(QWidget * parent,QString *path)
+bool databaseSqlite::createDatabase(QWidget *parent,QString *path)
 {
 
     if (!path)
@@ -34,7 +34,8 @@ bool databaseSqlite::createDatabase(QWidget * parent,QString *path)
 
     if(!QFile::copy(":/sqlite/todoro.db",*path))
     {
-        QMessageBox::critical(parent,"Error",QString("Copying database to '%1'' failed").arg(*path));
+        QString msg =QString("Copying database to %1 failed").arg(*path);
+        QMessageBox::critical(0,"Error",msg);
         if (!oldDb.isEmpty())
             connectDatabase(oldDb);
         return false;
@@ -97,6 +98,7 @@ void databaseSqlite::closeDatabase()
 {
     if (!QSqlDatabase::connectionNames().isEmpty()) {
         QSqlDatabase::database().close();
+
         QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
     }
 }
