@@ -52,6 +52,8 @@ private slots:
 
     void on_action_Preferences_triggered();
 
+    void on_pbSkip_clicked();
+
 private:
     void closeEvent(QCloseEvent * event);
     void changeState(bool save=1);

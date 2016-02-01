@@ -94,10 +94,12 @@ void frmMain::skipState()
     changeState(false);
     upgradeIcon();
     updateLights();
+    //qDebug()<<"clock in skipe"<<clockState;
+    clockState=PAUSE;
 }
 void frmMain::showAboutTodoro()
 {
-    QMessageBox::about(this,"Todoro app","Copyright: Miguel Angel Galarreta Valverde,\n Sao Paulo - 2012");
+    QMessageBox::about(0,"Todoro app","Copyright: Miguel Angel Galarreta Valverde,\n Sao Paulo - 2012-2015");
 }
 void frmMain::exitWithoutConfirm()
 {
@@ -209,9 +211,7 @@ void frmMain::changeState(bool save)
         if(save)
             savePomodoro();
         setMainButtonText("Break");
-        todayP+=1;
 
-        nPomodoros+=1;
         settings->setValue("pomodoros",nPomodoros);
         ui->laTodayPomodoros->setText(QString::number(todayP));
         ui->laPomodoros->setText(QString::number(nPomodoros));
@@ -236,6 +236,7 @@ void frmMain::changeState(bool save)
 
     updateLights();
     updatePomodoros();
+    updateTime();
     /*//test
     minuts=0;
     seconds=6;
@@ -332,7 +333,7 @@ void frmMain::updateTime()
 {
     if (seconds==0)
     {
-        seconds=60;
+        seconds=59;
         if (minuts>0)
         {
             minuts-=1;
@@ -482,4 +483,9 @@ void frmMain::on_action_Preferences_triggered()
 {
     frmOptions *fOpts = new frmOptions(settings);
     fOpts->exec();
+}
+
+void frmMain::on_pbSkip_clicked()
+{
+    skipState();
 }
