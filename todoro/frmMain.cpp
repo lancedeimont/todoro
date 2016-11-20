@@ -48,7 +48,7 @@ frmMain::frmMain(QSettings *msettings, QWidget *parent) :
     QAction *actShowme=menuCont->addAction("Show mainform");
     menuCont->addSeparator();
     QAction *actAbout=menuCont->addAction("About Todoro");
-    menuCont->addSeparator();
+    menuCont->addSeparator();    
     QAction *actExit= menuCont->addAction("Exit");
 
     connect(actExit,SIGNAL(triggered()),this,SLOT(exitCalled()));
@@ -60,6 +60,8 @@ frmMain::frmMain(QSettings *msettings, QWidget *parent) :
     connect(actNextStage,SIGNAL(triggered()),this,SLOT(on_pbStart_clicked()));
     connect(ui->actionNew_Project,SIGNAL(triggered()),this,SLOT(createProject()));
     connect(ui->cbProjects,SIGNAL(currentIndexChanged(int)),this,SLOT(projectChanged(int)));
+    connect(ui->action_About,SIGNAL(triggered(bool)), this, SLOT(showAboutTodoro()));
+    connect(ui->action_About_Qt,SIGNAL(triggered(bool)), this, SLOT(showAboutQt()));
 
 
     trayIcon->setContextMenu(menuCont);
@@ -99,7 +101,13 @@ void frmMain::skipState()
 }
 void frmMain::showAboutTodoro()
 {
-    QMessageBox::about(0,"Todoro app","Copyright: Miguel Angel Galarreta Valverde,\n Sao Paulo - 2012-2015");
+    std::stringstream ss;
+    ss<<"Todoro: version "<<"1.1"<<"\nCopyright: Miguel Angel Galarreta Valverde,\n Sao Paulo- Brasil,\n 2012-2016.";
+    QMessageBox::about(0,"Todoro app",ss.str().c_str());
+}
+void frmMain::showAboutQt()
+{
+    QMessageBox::aboutQt(0);
 }
 void frmMain::exitWithoutConfirm()
 {
@@ -343,7 +351,8 @@ void frmMain::updateTime()
             seconds=0;
             clockState=PAUSE;
             setMainButtonText("Continue");
-            makeAlertEndState();
+            if (currentState==RELAX_SHORT || currentState==RELAX_LONG) // dont alert when user is working
+                makeAlertEndState();
             changeState();
 
         }

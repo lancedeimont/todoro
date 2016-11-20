@@ -17,6 +17,8 @@
 #include <QSettings>
 #include <QMediaPlayer>
 #include "misc.h"
+#include "sstream"
+
 
 namespace Ui {
 class frmMain;
@@ -45,6 +47,7 @@ private slots:
     void showMainform();
     void exitCalled();
     void showAboutTodoro();
+    void showAboutQt();
     void createProject();
     void projectChanged(int index);
     void exitWithoutConfirm();
